@@ -12,9 +12,8 @@ class MoeListener(tweepy.StreamListener):
         self.gen_util = Generate_util(generator)
 
     # Handle incoming mentions, replies.
-    # Apparently streaming for DMs is dead and I'm too lazy to set up stuff for the account activity api.
+    # Apparently streaming for DMs is dead
     def on_data(self, inc_data):
-        print("data: ", inc_data)
         try:
             data = json.loads(inc_data)
             if 'in_reply_to_user_id' in data and data['in_reply_to_user_id'] == 1359290611988316161:

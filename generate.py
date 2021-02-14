@@ -1,6 +1,7 @@
 import random
 import hashlib
 import os
+import re
 
 class Generate_util():
 
@@ -8,6 +9,7 @@ class Generate_util():
         self.generator = generator
         self.generator.generate_one_image(1)
         self.delete_images = delete_images
+        self.name_pattern = re.compile("moename", re.IGNORECASE)
 
     #----------------------------------------------------------------------------
 
@@ -17,12 +19,16 @@ class Generate_util():
         text.replace("@Moetron", "")
 
         # currently only supporting rand, mess, and name
-        if "moerand" in text:
+        if re.search('moerand', text, re.IGNORECASE):
             return self.rand()
-        elif "moemess" in text:
+        elif re.search('moemess', text, re.IGNORECASE):
             return self.mess()
-        else:
+        elif re.search('moename', text, re.IGNORECASE):
+            text = self.name_pattern.sub("", text)
             return self.name(text)
+        else: # Don't know how we got here lol
+            return self.name(text)
+
 
     def rand(self):
         seed = random.randint(0, 4294967295)

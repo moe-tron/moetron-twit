@@ -20,7 +20,7 @@ Ex: @MoetronBot moemess
 **name** 
 Generates an image based on the hash of a string.
 
-Ex: @MoetronBot hey give me an anime girl
+Ex: @MoetronBot moename hey give me an anime girl
 (above will hash "hey give me an anime girl" and use that for the seed.)
 
 
@@ -83,4 +83,4 @@ A) Probably not, tensorflow will probably give some deprecation warnings and on 
 * The creators of StyleGAN2, dnnlib is from there w/ all copyrights / attributions remaining.
 
 **Future work**
-* Lots of stuff to do, I'm planning on migrating off of streaming w/ tweepy and using the account activity API instead as streaming doesn't handle dm's or non-direct mentions...
+* Probably try to increase performance.

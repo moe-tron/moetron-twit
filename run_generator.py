@@ -26,13 +26,6 @@ class Generator:
         self.Gs_kwargs.output_transform = dict(func=tflib.convert_images_to_uint8, nchw_to_nhwc=True)
         self.Gs_kwargs.randomize_noise = True
 
-
-        self.Gs_syn_kwargs = dnnlib.EasyDict()
-        self.Gs_syn_kwargs.output_transform = dict(func=tflib.convert_images_to_uint8, nchw_to_nhwc=True)
-        self.Gs_syn_kwargs.randomize_noise = False
-        self.Gs_syn_kwargs.minibatch_size = 4
-        self.w_avg = self.Gs.get_var('dlatent_avg')
-
     def generate_one_image(self, seed, truncation_psi = 0.55, op=""):
         img_path = 'results/%sseed%04d.png' % (op, seed)
         if os.path.isfile(img_path):
